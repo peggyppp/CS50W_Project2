@@ -1,0 +1,219 @@
+
+/* Whole Webpage */
+#sitebody{
+    width: 100vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Left - Channel List & Name Area */
+#channel_list{
+    height: 100vh;
+    width: 20vw;
+    /* min-width: 160px; */
+    background-color: rgb(87, 2, 121);
+    text-align: left;
+    float: left;
+    display: block;
+    padding: 10px;
+    color: white;
+}
+
+#ch_list_title{
+    width: 15vw;
+}
+
+/* Left - Name Area */
+#name {
+    font-size: 0.5em;
+    width: 100%;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+#current_name_row {
+    height: 25px;
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#current_name {
+    height: 25px;
+    font-weight: lighter;
+    font-style: italic;
+    width: 10vw;
+    font-size: 2em;
+    color: white;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#icon_color {
+    width: 15px;
+    height: 15px;
+}
+
+#icon_logout_div {
+    width: 2vw;
+    height: width;
+    max-height: 20px;
+    float: right;
+    position: relative;
+    right: 5px;
+}
+
+#icon_logout {
+    width: 2.5vw;
+    position: relative;
+    height: width;
+    max-height: 20px;
+    float: right;
+}
+
+#newname {
+    font-size: 0.5em;
+    width: 80%;
+    height: 25px;
+}
+
+#newname_go {
+    width: 3vw;
+    max-width: 25px;
+    height: 3vw;
+    max-height: 25px;
+    float: right;
+    background-image:url('../static/check.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.icon {
+    width: 15px; 
+    height: 15px;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-flex; 
+    margin-right: 3px;
+}
+
+.channel {
+    font-size: 1em;
+    line-height: 20px;
+    width: 18vw;
+    color: white;
+}
+
+#create_ch{
+    width: 15vw;
+    position: absolute;
+    left: 2.5%;
+    bottom: 4vh;
+    font-size: 0.5em;
+    line-height: 20px;
+    color: white;
+}
+
+#new_ch_name{
+    width: 15vw;
+    position: absolute;
+    bottom: 30px;
+    font-size: 0.5em;
+    line-height: 20px;
+    color: black;
+}
+
+.btn-block {
+    padding: 0.5% ;
+}
+
+@keyframes fade {
+    from {
+        opacity: 1; }
+    to {
+        opacity: 0; }
+}
+
+#create_err{
+    animation-name: fade;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    position: absolute;
+    bottom: 60px;
+    font-size: 0.5em;
+}
+
+/* Center - Message Viewer */
+#channel_bar {
+    width: 80vw;
+    max-height: 10vh;;
+    height: auto;
+    min-height: 5vh;
+    font-size: 5vh;
+    padding-left: 15px;
+    background-color:white;
+    text-align: left;
+    overflow: auto;
+    border-bottom: 2px dashed #ffc107;
+}
+
+#msgview{
+    height: 76vh;
+    width: 80vw;
+    max-width: 80vw;
+    margin-left: 20vw;
+    background-color:white;
+    text-align: left;
+    line-height: 20px;
+    overflow: auto;
+    padding: 1vw;
+}
+
+.span_name {
+    font-weight: bold; 
+    font-size: 0.9rem;
+    display: inline-flex; margin-right: 3px;
+}
+
+.span_time {
+    font-size: 0.6rem; 
+    color: gray;
+    display: inline-flex; margin-right: 3px;
+}
+
+.div_msg {
+    color: black; 
+    font-size: 0.9rem;
+    margin-bottom: 0.03vh;
+}
+
+/* Bottom - Send Box */
+#sendbox{
+    height: 15vh;
+    width: 80vw;
+    margin-left: 20vw;
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+#msgtext {
+    width: 90%;
+    height: 10vh;
+    vertical-align: middle;
+}
+
+#sendmsg {
+    width: 5vw;
+    height: 5vw;
+    margin: 1vw;
+    border: none;
+    background-image:url('../static/icon_up2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5vw 5vw;
+}
