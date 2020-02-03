@@ -1,16 +1,20 @@
 import os
+from datetime import timedelta
 
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
-from datetime import timedelta
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = timedelta(seconds=1)
 socketio = SocketIO(app)
-msg_data = {}
 
-print('msg_data=',msg_data)
+
+#For heroku
+if os.getenv("SECRET_KEY") is None:
+    app.config["SECRET_KEY"] = "gogopeggy"
+
+msg_data = {}
 
 @app.route("/")
 def index():
@@ -22,7 +26,6 @@ def create_ch():
     if ch_name in msg_data:
         return render_template('index.html', ch_list=msg_data, msg_data=msg_data, create_err="Channel already exists.")
     msg_data[ch_name] = []
-    print(msg_data)
     return render_template('index.html', ch_list=msg_data, msg_data=msg_data, create_err="")
 
 
@@ -43,23 +46,19 @@ def msg_add(data):
         msg_data[channel].append(new_msg)
 
         msg = msg_data[channel][-1]
-        print('msg={}'.format(msg))
         emit('update msglist', {'select': msg, 'channel': channel} , broadcast=True)
-    print('msg_data=',msg_data)
     
 
 @socketio.on("default msg")
 def msg_view(data):
-    print('呼喚msg view')
     channel = data['channel']
     try:
         msglist = msg_data[channel]
     except:
         msglist = []
     emit('msg view', {'select': msglist} , broadcast=False)
-    print('msg_data=',msg_data)
 
-# Check if selected channel exists in msg_data on the server
+
 @socketio.on("check channel")
 def channel_check(data):
     channel = data['channel']
@@ -69,6 +68,11 @@ def channel_check(data):
         emit('check channel result', {'result': "no"} , broadcast=False)
 
 
+@app.route("/reset")
+def reset():
+    msg_data = {}
+    return render_template('index.html', ch_list=msg_data, msg_data="", create_err="")
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    socketio.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
